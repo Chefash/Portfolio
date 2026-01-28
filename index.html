@@ -467,6 +467,83 @@
             }
         }
 
+        /* Work Samples Section */
+        .work-intro {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin-bottom: 4rem;
+            line-height: 1.8;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .work-item {
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .work-item:hover {
+            transform: translateY(-10px);
+            border-color: rgba(102, 126, 234, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .work-item-video {
+            grid-column: span 2;
+        }
+
+        .work-image {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .work-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .work-image video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .work-item:hover .work-image img {
+            transform: scale(1.05);
+        }
+
+        .work-details {
+            padding: 2rem;
+        }
+
+        .work-details h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .work-details p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
@@ -495,6 +572,15 @@
                 width: 100%;
                 max-width: 300px;
                 justify-content: center;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .work-item-video {
+                grid-column: span 1;
             }
         }
 
@@ -713,6 +799,73 @@
         </div>
     </section>
 
+    <!-- Work Samples Section -->
+    <section id="work-samples">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-number">04</div>
+                <h2 class="section-title">Work Samples</h2>
+            </div>
+            
+            <p class="work-intro reveal">A selection of web3 content created for Moi Technologies, showcasing strategic messaging and visual design for blockchain technology platforms.</p>
+            
+            <div class="work-grid">
+                <div class="work-item reveal">
+                    <div class="work-image">
+                        <img src="Engineered_for_Infinity_version_1.png" alt="Engineered for Infinity - Moi Technologies">
+                    </div>
+                    <div class="work-details">
+                        <h3>Engineered for Infinity</h3>
+                        <p>Brand messaging highlighting decentralized architecture and scalable performance</p>
+                    </div>
+                </div>
+                
+                <div class="work-item reveal">
+                    <div class="work-image">
+                        <img src="Participant-Centric_Power_version_1.png" alt="Participant-Centric Power - Moi Technologies">
+                    </div>
+                    <div class="work-details">
+                        <h3>Participant-Centric Power</h3>
+                        <p>Content emphasizing user-first design and high-throughput DApps</p>
+                    </div>
+                </div>
+                
+                <div class="work-item reveal">
+                    <div class="work-image">
+                        <img src="Scale_Beyond_the_Horizon_version_1.png" alt="Scale Beyond the Horizon - Moi Technologies">
+                    </div>
+                    <div class="work-details">
+                        <h3>Scale Beyond the Horizon</h3>
+                        <p>Visual storytelling for decentralized growth capabilities</p>
+                    </div>
+                </div>
+                
+                <div class="work-item reveal">
+                    <div class="work-image">
+                        <img src="Security_is_Non-Negotiable_version_1.png" alt="Security is Non-Negotiable - Moi Technologies">
+                    </div>
+                    <div class="work-details">
+                        <h3>Security is Non-Negotiable</h3>
+                        <p>Trust-focused messaging for blockchain security features</p>
+                    </div>
+                </div>
+                
+                <div class="work-item work-item-video reveal">
+                    <div class="work-image">
+                        <video controls>
+                            <source src="Scene-1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="work-details">
+                        <h3>Moi Technologies Brand Video</h3>
+                        <p>Motion graphics content for social media campaigns</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
@@ -737,7 +890,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Ashleigh Nicole. All rights reserved.</p>
+            <p>&copy; 2026 Ashleigh Nicole. All rights reserved.</p>
         </div>
     </footer>
 
