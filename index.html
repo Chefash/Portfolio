@@ -501,6 +501,25 @@
             grid-column: span 2;
         }
 
+        .work-item-carousel {
+            grid-column: span 2;
+            max-width: 33.33%;
+            margin: 0 auto;
+        }
+
+        .work-item-carousel .work-image {
+            height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .work-item-carousel .work-image video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
         .work-image {
             position: relative;
             width: 100%;
@@ -543,6 +562,26 @@
             line-height: 1.6;
         }
 
+        /* MOI Carousel Video - Restricted Size */
+        .work-item-carousel {
+            max-width: 33.333%;
+            margin: 0 auto;
+            grid-column: span 2;
+        }
+        
+        .work-item-carousel .work-image {
+            height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .work-item-carousel .work-image video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
@@ -580,6 +619,15 @@
 
             .work-item-video {
                 grid-column: span 1;
+            }
+
+            .work-item-carousel {
+                max-width: 90%;
+                grid-column: span 1;
+            }
+
+            .work-item-carousel .work-image {
+                height: 60vh;
             }
         }
 
@@ -800,36 +848,47 @@
                 <div class="work-grid">
                     <div class="work-item work-item-video reveal">
                         <div class="work-image">
-                            <video controls>
-                                <source src="intro-vid.gif" type="gif">
-                                Your browser does not support the video tag.
-                            </video>
+                            <img src="intro.gif" alt="YogaWorks Animation">
                         </div>
                         <div class="work-details">
-                            <h3>YogaWorks Brand Video</h3>
-                            <p>Engaging video content for social media campaigns</p>
+                            <h3>YogaWorks Brand Animation</h3>
+                            <p>Engaging animated content for social media campaigns</p>
                         </div>
                     </div>
                     <div class="work-item reveal">
                         <div class="work-image">
-                            <img src="Practice_love_from_within_version_1.png" alt="YogaWorks Practice Love From Within campaign">
+                            <img src="Cultivate_inner_calm__version_1__1_.png" alt="YogaWorks Cultivate Inner Calm campaign">
+                        </div>
+                        <div class="work-details">
+                            <h3>Cultivate Inner Calm</h3>
+                            <p>Heart-opening series campaign promoting inner peace and mindful connection</p>
+                        </div>
+                    </div>
+                    <div class="work-item reveal">
+                        <div class="work-image">
+                            <img src="Open_your_heart__version_1__1_.png" alt="YogaWorks Open Your Heart campaign">
+                        </div>
+                        <div class="work-details">
+                            <h3>Open Your Heart</h3>
+                            <p>Seasonal stress-release series with curated stretches for emotional wellness</p>
+                        </div>
+                    </div>
+                    <div class="work-item reveal">
+                        <div class="work-image">
+                            <img src="Practice_love_from_within__version_1__1_.png" alt="YogaWorks Practice Love From Within campaign">
                         </div>
                         <div class="work-details">
                             <h3>Practice Love From Within</h3>
-                            <p>
-                                Seasonal mindfulness campaign encouraging internal peace and self-connection. Designed for social engagement and brand warmth.
-                            </p>
+                            <p>February mindfulness campaign trading external noise for deep internal peace</p>
                         </div>
                     </div>
                     <div class="work-item reveal">
                         <div class="work-image">
-                            <img src="Trust_the_experts_version_1.png" alt="YogaWorks Trust the Experts campaign">
+                            <img src="Trust_the_experts__version_1__1_.png" alt="YogaWorks Trust the Experts campaign">
                         </div>
                         <div class="work-details">
                             <h3>Trust the Experts</h3>
-                            <p>
-                                Educational creative highlighting YogaWorks instructors and biomechanics credibility. Focused on authority, clarity, and conversion.
-                            </p>
+                            <p>Educational creative highlighting gold standard yoga heritage and biomechanics expertise</p>
                         </div>
                     </div>
                 </div>
@@ -841,7 +900,42 @@
                 <h4>Verywell Health</h4>
                 <p class="project-desc">Educational graphics and engagement posts for consumer health media.</p>
                 <div class="work-grid">
-                    <!-- 4–8 Verywell posts -->
+                    <div class="work-item reveal">
+                        <div class="work-image">
+                            <img src="Master_Your_Blood_Pressure_version_1.png" alt="Master Your Blood Pressure - Verywell Health">
+                        </div>
+                        <div class="work-details">
+                            <h3>Master Your Blood Pressure</h3>
+                            <p>Educational content on hypertension management and regular monitoring</p>
+                        </div>
+                    </div>
+                    <div class="work-item reveal">
+                        <div class="work-image">
+                            <img src="The_Mediterranean_Advantage_version_1.png" alt="The Mediterranean Advantage - Verywell Health">
+                        </div>
+                        <div class="work-details">
+                            <h3>The Mediterranean Advantage</h3>
+                            <p>Nutrition guidance promoting heart-healthy dietary choices and arterial wellness</p>
+                        </div>
+                    </div>
+                    <div class="work-item reveal">
+                        <div class="work-image">
+                            <img src="The_Physician_Blueprint_version_1.png" alt="Navigate Your Heart Checkup - Verywell Health">
+                        </div>
+                        <div class="work-details">
+                            <h3>Navigate Your Heart Checkup</h3>
+                            <p>Physician-vetted discussion guide empowering patients for medical appointments</p>
+                        </div>
+                    </div>
+                    <div class="work-item reveal">
+                        <div class="work-image">
+                            <img src="Vetted_Habits_for_Heart_Health_version_1.png" alt="Vetted Habits for Heart Health - Verywell Health">
+                        </div>
+                        <div class="work-details">
+                            <h3>Vetted Habits for Heart Health</h3>
+                            <p>Board-certified cardiovascular advice for Heart Month awareness campaign</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -864,7 +958,7 @@
                             <p>Brand introduction and platform overview video</p>
                         </div>
                     </div>
-                    <div class="work-item work-item-video reveal">
+                    <div class="work-item work-item-video work-item-carousel reveal">
                         <div class="work-image">
                             <video controls>
                                 <source src="MOI-carousel.mp4" type="video/mp4">
