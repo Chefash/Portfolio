@@ -1,239 +1,968 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ashleigh Nicole - Marketing Professional & Web3 Strategist</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashleigh Nicole - Marketing Professional & Web3 Strategist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+        :root {
+            --primary: #1a1a2e;
+            --accent: #ff6b9d;
+            --secondary: #16213e;
+            --text: #e8e8e8;
+            --text-muted: #a8a8a8;
+            --highlight: #ffd93d;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
 
-<style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-/* ---------- EXISTING STYLES TRIMMED FOR BREVITY ABOVE ---------- */
-/* Keep everything you already had above this point */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-/* ========================= */
-/* UPDATED WORK GRID */
-/* ========================= */
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 107, 157, 0.08) 0%, transparent 50%);
+        }
 
-.work-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  margin-top: 2rem;
-}
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%);
+            pointer-events: none;
+        }
 
-.work-item {
-  position: relative;
-  background: rgba(255,255,255,0.02);
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.05);
-  transition: all .4s ease;
-}
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
 
-.work-item:hover {
-  transform: translateY(-8px);
-  border-color: rgba(102,126,234,.4);
-  box-shadow: 0 20px 40px rgba(0,0,0,.3);
-}
+        .hero-label {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.3s forwards;
+        }
 
-.work-image img {
-  width: 100%;
-  display: block;
-  cursor: zoom-in;
-  transition: transform .4s ease;
-}
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--text) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.5s forwards;
+        }
 
-.work-item:hover .work-image img {
-  transform: scale(1.05);
-}
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+            font-weight: 300;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.7s forwards;
+        }
 
-.work-details {
-  padding: 1.5rem;
-}
+        .hero-subtitle span {
+            color: var(--highlight);
+            font-weight: 500;
+        }
 
-.work-item-video {
-  grid-column: 1 / -1;
-}
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.9s forwards;
+        }
 
-/* Responsive */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
 
-@media (max-width: 1024px) {
-  .work-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+        .contact-item:hover {
+            color: var(--accent);
+        }
 
-@media (max-width: 640px) {
-  .work-grid {
-    grid-template-columns: 1fr;
-  }
-}
+        .contact-item svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
 
-/* ========================= */
-/* LIGHTBOX */
-/* ========================= */
+        /* Section Styles */
+        section {
+            padding: 8rem 0;
+            position: relative;
+        }
 
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.9);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
+        .section-header {
+            margin-bottom: 4rem;
+            position: relative;
+        }
 
-.lightbox.active {
-  display: flex;
-}
+        .section-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
 
-.lightbox-content {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 14px;
-  box-shadow: 0 25px 70px rgba(0,0,0,.6);
-  animation: zoomIn .3s ease;
-}
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
 
-.lightbox-close {
-  position: absolute;
-  top: 30px;
-  right: 40px;
-  font-size: 42px;
-  color: #fff;
-  cursor: pointer;
-}
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
 
-@keyframes zoomIn {
-  from { opacity: 0; transform: scale(.92); }
-  to { opacity: 1; transform: scale(1); }
-}
+        /* Summary */
+        .summary {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent);
+            padding: 2.5rem;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 4rem;
+            border-radius: 0 8px 8px 0;
+            backdrop-filter: blur(10px);
+        }
 
-</style>
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: rgba(102, 126, 234, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .skill-category h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 1.25rem;
+        }
+
+        .skill-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--highlight);
+        }
+
+        /* Experience Timeline */
+        .experience-timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
+        }
+
+        .experience-item {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--primary), 0 0 0 6px rgba(255, 107, 157, 0.3);
+        }
+
+        .experience-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-role {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            font-size: 1.125rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-date {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .experience-description {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .achievements {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .achievement-item {
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid rgba(102, 126, 234, 0.3);
+            border-radius: 0 6px 6px 0;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-left-color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient);
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .cta-text {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #764ba2;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #764ba2;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes moveGrid {
+            from {
+                transform: translate(0, 0);
+            }
+            to {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        /* Work Samples Section */
+        .work-intro {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin-bottom: 4rem;
+            line-height: 1.8;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .work-item {
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .work-item:hover {
+            transform: translateY(-10px);
+            border-color: rgba(102, 126, 234, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .work-item-video {
+            grid-column: span 2;
+        }
+
+        .work-image {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .work-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .work-image video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .work-item:hover .work-image img {
+            transform: scale(1.05);
+        }
+
+        .work-details {
+            padding: 2rem;
+        }
+
+        .work-details h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .work-details p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 80vh;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            .experience-timeline {
+                padding-left: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .work-item-video {
+                grid-column: span 1;
+            }
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-label">Marketing Professional</div>
+                <h1 class="hero-title">Ashleigh<br>Nicole</h1>
+                <p class="hero-subtitle">
+                    <span>Web3 Content Strategist</span> & Community Growth Specialist crafting compelling narratives in the blockchain space
+                </p>
+                <div class="contact-info">
+                    <a href="mailto:frequent.remedies@gmail.com" class="contact-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 8L10.89 13.26C11.59 13.72 12.41 13.72 13.11 13.26L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z"/>
+                        </svg>
+                        frequent.remedies@gmail.com
+                    </a>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z"/>
+                        </svg>
+                        +1 (256)-225-0262
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17.657 16.657L13.414 20.9C13.039 21.275 12.535 21.487 12.007 21.487C11.479 21.487 10.975 21.275 10.6 20.9L6.343 16.657C5.22422 15.5381 4.46234 14.1127 4.15369 12.5608C3.84504 11.009 4.00349 9.40047 4.60901 7.93853C5.21452 6.4766 6.2399 5.22726 7.55548 4.34824C8.87107 3.46921 10.4178 3 12 3C13.5822 3 15.1289 3.46921 16.4445 4.34824C17.7601 5.22726 18.7855 6.4766 19.391 7.93853C19.9965 9.40047 20.155 11.009 19.8463 12.5608C19.5377 14.1127 18.7758 15.5381 17.657 16.657V16.657Z"/>
+                            <path d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z"/>
+                        </svg>
+                        Heflin, AL
+                    </div>
+                    <a href="https://www.linkedin.com/in/ashleigh-nicole-78353b228/" target="_blank" class="contact-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8V8Z"/>
+                            <path d="M6 9H2V21H6V9Z"/>
+                            <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- ========================= -->
-<!-- WORK SAMPLES SECTION -->
-<!-- ========================= -->
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-number">01</div>
+                <h2 class="section-title">About Me</h2>
+            </div>
+            <div class="summary reveal">
+                Results-driven marketing professional with 2+ years of experience in web3 content creation and social media management. Proven track record of building engaged online communities and delivering high-performing content. Combines creative storytelling with data-driven strategy to drive engagement and growth in the blockchain/tech space.
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category reveal">
+                    <h3>Content & Strategy</h3>
+                    <ul class="skill-list">
+                        <li>Content Creation</li>
+                        <li>Social Media Management</li>
+                        <li>SEO Optimization</li>
+                        <li>Campaign Development</li>
+                        <li>Brand Voice Development</li>
+                    </ul>
+                </div>
+                <div class="skill-category reveal">
+                    <h3>Community & Analytics</h3>
+                    <ul class="skill-list">
+                        <li>Community Engagement</li>
+                        <li>Analytics & Reporting</li>
+                        <li>Cross-Platform Management</li>
+                        <li>Engagement Metrics</li>
+                        <li>Data-Driven Insights</li>
+                    </ul>
+                </div>
+                <div class="skill-category reveal">
+                    <h3>Platforms</h3>
+                    <ul class="skill-list">
+                        <li>Discord & Telegram</li>
+                        <li>Twitter/X</li>
+                        <li>Instagram & Facebook</li>
+                        <li>LinkedIn</li>
+                        <li>Newsbreak</li>
+                    </ul>
+                </div>
+                <div class="skill-category reveal">
+                    <h3>Tools & Software</h3>
+                    <ul class="skill-list">
+                        <li>Google Workspace</li>
+                        <li>Canva</li>
+                        <li>Notion</li>
+                        <li>Adobe Creative Suite</li>
+                        <li>Social Media Analytics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="work-samples">
-<div class="container">
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-number">02</div>
+                <h2 class="section-title">Experience</h2>
+            </div>
+            <div class="experience-timeline">
+                <!-- Moi Technologies -->
+                <div class="experience-item reveal">
+                    <div class="experience-header">
+                        <h3 class="experience-role">Assistant to Social Media Manager</h3>
+                        <div class="experience-company">Moi Technologies</div>
+                        <div class="experience-date">March 2025 - Present</div>
+                    </div>
+                    <p class="experience-description">
+                        Drove community growth and engagement for web3 technology company, creating multi-platform content targeting core demographic of men aged 18-55.
+                    </p>
+                    <div class="achievements">
+                        <div class="achievement-item">Increased community engagement through strategic content development on X and LinkedIn</div>
+                        <div class="achievement-item">Managed content calendars ensuring consistent daily posting and platform-specific optimization</div>
+                        <div class="achievement-item">Created engaging text, image, and video content aligned with brand voice and web3 industry trends</div>
+                        <div class="achievement-item">Monitored and responded to community interactions, fostering active engagement and loyalty</div>
+                        <div class="achievement-item">Collaborated with design team to produce high-quality visuals for campaigns</div>
+                        <div class="achievement-item">Tracked performance metrics and provided data-driven insights for strategy optimization</div>
+                        <div class="achievement-item">Contributed to both paid and organic social media campaigns</div>
+                        <div class="achievement-item">Stayed current with web3 trends and integrated relevant topics into content strategy</div>
+                    </div>
+                </div>
 
-<div class="section-header">
-<div class="section-number">04</div>
-<h2 class="section-title">Case Studies</h2>
-</div>
+                <!-- Newsbreak -->
+                <div class="experience-item reveal">
+                    <div class="experience-header">
+                        <h3 class="experience-role">Contributing Writer</h3>
+                        <div class="experience-company">Newsbreak App</div>
+                        <div class="experience-date">March 2023 - August 2025</div>
+                    </div>
+                    <p class="experience-description">
+                        Produced timely, SEO-optimized news and feature articles covering trending topics, political news, and local stories with focus on accountability journalism.
+                    </p>
+                    <div class="achievements">
+                        <div class="achievement-item">Averaged 5 articles per week while maintaining high editorial standards</div>
+                        <div class="achievement-item">Researched and wrote engaging content tailored to local audiences with strong SEO performance</div>
+                        <div class="achievement-item">Crafted compelling headlines optimized for reader engagement and platform visibility</div>
+                        <div class="achievement-item">Monitored trending topics to deliver relevant, high-performing stories</div>
+                        <div class="achievement-item">Met consistent deadlines in fast-paced digital publishing environment</div>
+                        <div class="achievement-item">Collaborated with editors and incorporated feedback to refine content</div>
+                        <div class="achievement-item">Focused on investigative pieces holding institutions accountable</div>
+                    </div>
+                </div>
 
-<h3>Tech / Web3</h3>
+                <!-- JJ's Bistro -->
+                <div class="experience-item reveal">
+                    <div class="experience-header">
+                        <h3 class="experience-role">Executive Chef</h3>
+                        <div class="experience-company">JJ's Bistro de Paris</div>
+                        <div class="experience-date">October 2016 - January 2018</div>
+                    </div>
+                    <p class="experience-description">
+                        Led all kitchen operations including menu development, food cost control, staff training, and quality assurance.
+                    </p>
+                    <div class="achievements">
+                        <div class="achievement-item">Managed teams of sous chefs, line cooks, and kitchen staff</div>
+                        <div class="achievement-item">Hired and trained all back-of-house positions</div>
+                        <div class="achievement-item">Ensured compliance with health and safety regulations</div>
+                        <div class="achievement-item">Implemented new culinary techniques to optimize menu offerings and increase revenue</div>
+                        <div class="achievement-item">Partnered with suppliers and local farms for quality ingredient sourcing within budget</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="work-grid">
+    <!-- Education Section -->
+    <section id="education" style="padding: 4rem 0;">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-number">03</div>
+                <h2 class="section-title">Education</h2>
+            </div>
+            <div class="experience-item reveal" style="margin-bottom: 0;">
+                <div class="experience-header">
+                    <h3 class="experience-role">Associate of Applied Science in Culinary Arts</h3>
+                    <div class="experience-company">The Culinard at Virginia College</div>
+                    <div class="experience-date">2006 - 2008</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="work-item">
-<div class="work-image">
-<img src="Engineered_for_Infinity_version_1.png" alt="">
-</div>
-<div class="work-details">
-<h3>Engineered for Infinity</h3>
-<p>Brand messaging highlighting decentralized architecture and scalable performance.</p>
-</div>
-</div>
+    <!-- Work Samples Section -->
+    <section id="work-samples">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-number">04</div>
+                <h2 class="section-title">Case Studies</h2>
+            </div>
 
-<div class="work-item">
-<div class="work-image">
-<img src="Participant-Centric_Power_version_1.png" alt="">
-</div>
-<div class="work-details">
-<h3>Participant-Centric Power</h3>
-<p>User-first messaging for high-throughput DApps.</p>
-</div>
-</div>
+            <!-- FITNESS -->
+            <h3 class="industry-title reveal">Fitness</h3>
+            <div class="project-block reveal">
+                <h4>YogaWorks</h4>
+                <p class="project-desc">Social content and visual campaigns for a national yoga brand.</p>
+                <div class="work-grid">
+                    <div class="work-item work-item-video reveal">
+                        <div class="work-image">
+                            <video controls>
+                                <source src="intro-vid.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="work-details">
+                            <h3>YogaWorks Brand Video</h3>
+                            <p>Engaging video content for social media campaigns</p>
+                        </div>
+                    </div>
+                    <div class="work-item reveal">
+                        <div class="work-image">
+                            <img src="Practice_love_from_within_version_1.png" alt="YogaWorks Practice Love From Within campaign">
+                        </div>
+                        <div class="work-details">
+                            <h3>Practice Love From Within</h3>
+                            <p>
+                                Seasonal mindfulness campaign encouraging internal peace and self-connection. Designed for social engagement and brand warmth.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="work-item reveal">
+                        <div class="work-image">
+                            <img src="Trust_the_experts_version_1.png" alt="YogaWorks Trust the Experts campaign">
+                        </div>
+                        <div class="work-details">
+                            <h3>Trust the Experts</h3>
+                            <p>
+                                Educational creative highlighting YogaWorks instructors and biomechanics credibility. Focused on authority, clarity, and conversion.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<div class="work-item">
-<div class="work-image">
-<img src="Scale_Beyond_the_Horizon_version_1.png" alt="">
-</div>
-<div class="work-details">
-<h3>Scale Beyond the Horizon</h3>
-<p>Visual storytelling around decentralized scale.</p>
-</div>
-</div>
+            <!-- HEALTH -->
+            <h3 class="industry-title reveal">Health</h3>
+            <div class="project-block reveal">
+                <h4>Verywell Health</h4>
+                <p class="project-desc">Educational graphics and engagement posts for consumer health media.</p>
+                <div class="work-grid">
+                    <!-- 4–8 Verywell posts -->
+                </div>
+            </div>
 
-<div class="work-item">
-<div class="work-image">
-<img src="Security_is_Non-Negotiable_version_1.png" alt="">
-</div>
-<div class="work-details">
-<h3>Security is Non-Negotiable</h3>
-<p>Trust-driven blockchain messaging.</p>
-</div>
-</div>
+            <!-- TECH / WEB3 -->
+            <h3 class="industry-title reveal">Tech / Web3</h3>
+            <div class="project-block reveal">
+                <h4>MOI Technologies</h4>
+                <p class="project-desc">Brand storytelling and Web3 visuals.</p>
+                <div class="work-grid">
+                    <!-- VIDEOS FIRST -->
+                    <div class="work-item work-item-video reveal">
+                        <div class="work-image">
+                            <video controls>
+                                <source src="intro-vid.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="work-details">
+                            <h3>MOI Technologies Introduction</h3>
+                            <p>Brand introduction and platform overview video</p>
+                        </div>
+                    </div>
+                    <div class="work-item work-item-video reveal">
+                        <div class="work-image">
+                            <video controls>
+                                <source src="MOI-carousel.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="work-details">
+                            <h3>MOI Technologies Carousel</h3>
+                            <p>Social media carousel showcasing key features and benefits</p>
+                        </div>
+                    </div>
+                    
+                    <!-- CAMPAIGN STILLS -->
+                    <div class="work-item reveal">
+                        <div class="work-image">
+                            <img src="Engineered_for_Infinity_version_1.png" alt="Engineered for Infinity - Moi Technologies">
+                        </div>
+                        <div class="work-details">
+                            <h3>Engineered for Infinity</h3>
+                            <p>Brand messaging highlighting decentralized architecture and scalable performance</p>
+                        </div>
+                    </div>
+                    <div class="work-item reveal">
+                        <div class="work-image">
+                            <img src="Participant-Centric_Power_version_1.png" alt="Participant-Centric Power - Moi Technologies">
+                        </div>
+                        <div class="work-details">
+                            <h3>Participant-Centric Power</h3>
+                            <p>Content emphasizing user-first design and high-throughput DApps</p>
+                        </div>
+                    </div>
+                    <div class="work-item reveal">
+                        <div class="work-image">
+                            <img src="Scale_Beyond_the_Horizon_version_1.png" alt="Scale Beyond the Horizon - Moi Technologies">
+                        </div>
+                        <div class="work-details">
+                            <h3>Scale Beyond the Horizon</h3>
+                            <p>Visual storytelling for decentralized growth capabilities</p>
+                        </div>
+                    </div>
+                    <div class="work-item reveal">
+                        <div class="work-image">
+                            <img src="Security_is_Non-Negotiable_version_1.png" alt="Security is Non-Negotiable - Moi Technologies">
+                        </div>
+                        <div class="work-details">
+                            <h3>Security is Non-Negotiable</h3>
+                            <p>Trust-focused messaging for blockchain security features</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<div class="work-item work-item-video">
-<div class="work-image">
-<video controls>
-<source src="Scene-1.mp4" type="video/mp4">
-</video>
-</div>
-<div class="work-details">
-<h3>Brand Motion Video</h3>
-<p>Campaign motion asset for social.</p>
-</div>
-</div>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Let's Create Something Amazing</h2>
+                <p class="cta-text">Ready to elevate your brand's presence in the web3 space?</p>
+                <div class="cta-buttons">
+                    <a href="mailto:frequent.remedies@gmail.com" class="btn btn-primary">
+                        Get In Touch
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ashleigh-nicole-78353b228/" target="_blank" class="btn btn-secondary">
+                        View LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</div>
-</div>
-</section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Ashleigh Nicole. All rights reserved.</p>
+        </div>
+    </footer>
 
-<!-- ========================= -->
-<!-- LIGHTBOX MODAL -->
-<!-- ========================= -->
+    <script>
+        // Scroll reveal animation
+        const reveals = document.querySelectorAll('.reveal');
 
-<div id="lightbox" class="lightbox">
-<span class="lightbox-close">&times;</span>
-<img class="lightbox-content" id="lightbox-img">
-</div>
+        function checkReveal() {
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
 
-<script>
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
 
-/* Scroll reveal (keep your existing if already included) */
-
-/* ========================= */
-/* LIGHTBOX FUNCTIONALITY */
-/* ========================= */
-
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const closeBtn = document.querySelector(".lightbox-close");
-
-document.querySelectorAll(".work-image img").forEach(img => {
-  img.addEventListener("click", () => {
-    lightbox.classList.add("active");
-    lightboxImg.src = img.src;
-  });
-});
-
-closeBtn.addEventListener("click", () => {
-  lightbox.classList.remove("active");
-});
-
-lightbox.addEventListener("click", e => {
-  if (e.target === lightbox) {
-    lightbox.classList.remove("active");
-  }
-});
-
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") {
-    lightbox.classList.remove("active");
-  }
-});
-
-</script>
-
+        window.addEventListener('scroll', checkReveal);
+        checkReveal(); // Check on load
+    </script>
 </body>
 </html>
