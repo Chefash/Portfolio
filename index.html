@@ -520,6 +520,12 @@
             object-fit: contain;
         }
 
+        .work-item-carousel .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
         .work-image {
             position: relative;
             width: 100%;
@@ -562,24 +568,32 @@
             line-height: 1.6;
         }
 
-        /* MOI Carousel Video - Restricted Size */
-        .work-item-carousel {
-            max-width: 33.333%;
-            margin: 0 auto;
-            grid-column: span 2;
+        /* Industry titles and project blocks */
+        .industry-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--accent);
+            margin-top: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
-        
-        .work-item-carousel .work-image {
-            height: 75vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+        .project-block {
+            margin-bottom: 4rem;
         }
-        
-        .work-item-carousel .work-image video {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+
+        .project-block h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
         }
 
         /* Responsive */
@@ -846,7 +860,7 @@
                 <h4>YogaWorks</h4>
                 <p class="project-desc">Social content and visual campaigns for a national yoga brand.</p>
                 <div class="work-grid">
-                    <div class="work-item work-item-video reveal">
+                    <div class="work-item work-item-carousel reveal">
                         <div class="work-image">
                             <img src="intro.gif" alt="YogaWorks Animation">
                         </div>
@@ -945,20 +959,19 @@
                 <h4>MOI Technologies</h4>
                 <p class="project-desc">Brand storytelling and Web3 visuals.</p>
                 <div class="work-grid">
-                    <!-- VIDEOS FIRST -->
-                    <div class="work-item work-item-video reveal">
+                    <!-- Web3 Introduction GIF -->
+                    <div class="work-item work-item-carousel reveal">
                         <div class="work-image">
-                            <video controls>
-                                <source src="intro-web3.gif" type="gif">
-                                Your browser does not support the video tag.
-                            </video>
+                            <img src="intro-web3.gif" alt="Web3 Introduction Animation">
                         </div>
                         <div class="work-details">
-                            <h3>MOI Technologies Introduction</h3>
-                            <p>Brand introduction and platform overview video</p>
+                            <h3>Web3 Platform Introduction</h3>
+                            <p>Brand introduction and platform overview animation</p>
                         </div>
                     </div>
-                    <div class="work-item work-item-video work-item-carousel reveal">
+
+                    <!-- MOI Carousel Video -->
+                    <div class="work-item work-item-carousel reveal">
                         <div class="work-image">
                             <video controls>
                                 <source src="MOI-carousel.mp4" type="video/mp4">
@@ -1010,7 +1023,50 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+
+    <!-- AI-Enhanced Creations Section -->
+    <section id="ai-creations">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-number">05</div>
+                <h2 class="section-title">AI-Enhanced Creations</h2>
+            </div>
+            <p class="work-intro reveal">
+                Leveraging AI tools to create engaging visual content and dynamic campaigns that push creative boundaries.
+            </p>
+            <div class="work-grid">
+                <!-- Grok Ad Video 1 -->
+                <div class="work-item work-item-carousel reveal">
+                    <div class="work-image">
+                        <video controls>
+                            <source src="Grok-ad-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="work-details">
+                        <h3>Grok AI Advertisement</h3>
+                        <p>AI-generated promotional video showcasing creative storytelling and brand narrative</p>
+                    </div>
+                </div>
+
+                <!-- Grok Ad Video 2 -->
+                <div class="work-item work-item-carousel reveal">
+                    <div class="work-image">
+                        <video controls>
+                            <source src="Gro-videoad.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="work-details">
+                        <h3>Grok AI Campaign</h3>
+                        <p>AI-powered video content demonstrating innovative advertising approaches</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- CTA Section -->
     <section class="cta-section">
